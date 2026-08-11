@@ -26,23 +26,23 @@ GitHub Actions 实现 `酷狗概念VIP` 自动签到，每天领取总计 `两�
 1. Fork 本仓库
 
 1. 创建添加令牌
- - **创建令牌** 
+   - **创建令牌**  
      复制下方官网链接，在浏览器中打开
 
- ```shell
- https://github.com/settings/personal-access-tokens/new
- ```
+     ```shell
+     https://github.com/settings/personal-access-tokens/new
+     ```
 
- - **登录 GitHub 官网** 
+   - **登录 GitHub 官网**  
      若登陆后未跳转至token生成页，请再次粘贴链接进行访问
- - **在设置页面配置权限** 
- **Token name 备注**：随意填写
- **Expiration (有效期)**：建议自定义有效期，长期无人维护时不要选择过长
- **Repository access (仓库范围)**：只选择当前 fork 的仓库
- **Repository permissions (仓库权限)**：`Metadata` 保持只读，`Secrets` 设置为读写
- ![精细化个人访问令牌权限](imgs/精细化个人访问令牌权限.png)
- - 滑动到底部，点击绿色的 Generate token 保存按钮
- - 复制生成的字符串，回到本仓库添加到`Secret`，变量名 `PAT`，value 为复制的令牌
+   - **在设置页面配置权限**  
+      **Token name 备注**：随意填写
+      **Expiration (有效期)**：建议自定义有效期，长期无人维护时不要选择过长
+      **Repository access (仓库范围)**：只选择当前 fork 的仓库
+      **Repository permissions (仓库权限)**：`Metadata` 保持只读，`Secrets` 设置为读写
+      ![精细化个人访问令牌权限](imgs/精细化个人访问令牌权限.png)
+   - 滑动到底部，点击绿色的 Generate token 保存按钮
+   - 复制生成的字符串，回到本仓库添加到`Secret`，变量名 `PAT`，value 为复制的令牌
 
 1. 登录（两种独立的登录方式，任选其一）
 
@@ -82,14 +82,6 @@ GitHub Actions 实现 `酷狗概念VIP` 自动签到，每天领取总计 `两�
    | 邮箱 SMTP | `MAIL_TO` | 收件邮箱地址 |
 
    通知内容包含：运行日期、账号数量、成功/失败统计、各账号听歌领取状态、VIP 领取次数、VIP 到期时间、错误信息等。
-
-> [!warning]
-> 钉钉机器人安全设置注意事项：
->
-> 1. **自定义关键词**：发送的消息文本必须包含你设置的关键词，否则消息会被钉钉拒绝（错误码 310000）。例如关键词设置为"日期"，但消息中只有 `2026-08-10` 数字日期、没有"日期"二字，就会一直收不到通知。建议将关键词设置为 `签到` 或 `酷狗`。
-> 2. **加签**：若机器人安全设置选择"加签"，必须同时配置 Secret `DINGTALK_SECRET`，否则签名校验失败。
-> 3. **IP 白名单**：不适用于 GitHub Actions（出口 IP 不固定），请勿选择。
-
 
 API源代码来自 [MakcRe/KuGouMusicApi](https://github.com/MakcRe/KuGouMusicApi) ~~图省事直接搬来~~
 
